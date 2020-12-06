@@ -67,7 +67,7 @@ GEM
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     diffy (3.4.0)
-    dokno (1.0.0)
+    dokno (1.1.1)
       diffy (~> 3.4)
       redcarpet (~> 3.5)
     erubi (1.10.0)
@@ -215,7 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  dokno (~> 1.0)
+  dokno (~> 1.1, >= 1.1.1)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (~> 1.2, >= 1.2.3)
