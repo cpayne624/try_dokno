@@ -8,7 +8,7 @@ Dokno.configure do |config|
   #   (Symbol) app_user_auth_method
   #   (Symbol) app_user_name_method
 
-  # config.app_user_object      = 'current_user'
-  # config.app_user_auth_method = :admin?
-  # config.app_user_name_method = :name
+  config.app_user_object      = 'current_user'
+  config.app_user_auth_method = :admin?
+  config.app_user_name_method = :name
 end
