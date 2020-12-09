@@ -1,25 +1,32 @@
-<a href="<%= dokno_path %>" target="_blank">Dokno Knowledgebase</a>
+<a href="<%= dokno_path %>" target="_blank">Demo Dokno</a>
 
-<h1>A page in your app</h1>
-<p>
-  This might be something in your app that needs clarification or further<br />
-  background, with an <%= dokno_article_link('in-context link like this one', slug: Dokno::Article.take&.slug) %>
-  that explains it all.<br />
-  Clicking that link opens a flyout within your app (to the right) containing<br />
-  the article referenced by its unique slug or token.
-</p>
+<% unless Dokno::Article.exists? %>
+  <h1>Try it</h1>
+  <p>
+    The above link will take you to the mounted Dokno site.
+  </p>
+<% else %>
+  <h1>A page in your app</h1>
+  <p>
+    This might be something in your app that needs clarification or further<br />
+    background, with an <%= dokno_article_link('in-context link like this one', slug: Dokno::Article.take&.slug) %>
+    that explains it all.<br />
+    Clicking that link opens a flyout within your app (to the right) containing<br />
+    the article referenced by its unique slug or token.
+  </p>
 
-<h2>Inline Article View Helper</h2>
-<p>
-  You can add these in-context article links within your app via this Rails helper:
-</p>
-<p>
-  &lt;%= dokno_article_link({link-text}, slug: {unique-article-slug}) %&gt;
-</p>
+  <h2>Flyout Article View Helper</h2>
+  <p>
+    You can add in-context article links like these within your app via the <tt>dokno_article_link</tt> view helper:
+  </p>
+  <blockquote>
+    <tt>&lt;%= dokno_article_link({link-text}, slug: {unique-article-slug}) %&gt;</tt>
+  </blockquote>
 
-<h2>Defined Articles</h2>
-<ul>
-  <% Dokno::Article.select(:slug, :title).order(:title).each do |article| %>
-    <li><%= dokno_article_link(article.title, slug: article.slug) %> (<%= article.slug %>)</li>
-  <% end %>
-</ul>
+  <h2>Created Articles</h2>
+  <ul>
+    <% Dokno::Article.select(:slug, :title).alpha_order.each do |article| %>
+      <li><%= dokno_article_link(article.title, slug: article.slug) %> (<%= article.slug %>)</li>
+    <% end %>
+  </ul>
+<% end %>
