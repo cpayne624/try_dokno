@@ -1,24 +1,31 @@
-# README
+# Try Dokno
+[![Gem Version](https://badge.fury.io/rb/dokno.svg)](https://badge.fury.io/rb/dokno)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a minimal example of a Rails app with the [Dokno](https://github.com/cpayne624/dokno) gem mounted and configured.
 
-Things you may want to cover:
+## Setup
+Clone try_dokno:
+```bash
+$ git clone https://github.com/cpayne624/try_dokno.git
+```
 
-* Ruby version
+Bundle:
+```bash
+$ cd try_dokno
+$ bundle
+```
 
-* System dependencies
+Setup the db:
+```bash
+$ rake db:setup
+```
 
-* Configuration
+Start:
+```bash
+$ rails s
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Open in your browser:
+```
+http://127.0.0.1:3000
+```
