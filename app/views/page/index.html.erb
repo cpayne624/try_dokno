@@ -1,12 +1,21 @@
-<a href="<%= dokno_path %>" target="_blank">Demo Dokno</a>
+<h1>Dokno Example Rails App</h1>
+<p>This is a minimal example Rails app with the <a href="https://github.com/cpayne624/dokno" target="_blank">Dokno engine</a> mounted.</p>
+<p>Dokno can be mounted to your desired path within your app. The demo path has been configured to <%= dokno_path %>.</p>
+
+<blockquote>
+  <a href="<%= dokno_path %>" target="_blank">Open the Demo</a>
+</blockquote>
+
+<h2>Source</h2>
+<p>Reference the <a href="https://github.com/cpayne624/try_dokno" target="_blank">repo for this site</a> for example configuration.</p>
 
 <% unless Dokno::Article.exists? %>
-  <h1>Try it</h1>
+  <h2>Demo</h2>
   <p>
     The above link will take you to the mounted Dokno site.
   </p>
 <% else %>
-  <h1>A page in your app</h1>
+  <h2>A page in your app</h2>
   <p>
     This might be something in your app that needs clarification or further<br />
     background, with an <%= dokno_article_link('in-context link like this one', slug: Dokno::Article.take&.slug) %>
