@@ -1,7 +1,75 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+DatabaseCleaner.clean_with(:truncation)
+
+module Dokno
+  SPINNER = Enumerator.new do |e|
+    loop do
+      e.yield '|'
+      e.yield '/'
+      e.yield '-'
+      e.yield '\\'
+    end
+  end
+
+  def self.show_step(step); printf " \n#{step} "; end
+  def self.show_progress; printf "#{SPINNER.next}\b"; end
+  def self.show_done; printf " \nAll done\n\n"; end
+
+  def self.faker_markdown
+    %(
+# #{Faker::Company.catch_phrase}
+#{Faker::Markdown.emphasis} #{Faker::Markdown.emphasis}
+
+## #{Faker::Company.catch_phrase}
+#{Faker::Lorem.paragraph(sentence_count: 20, random_sentences_to_add: 50)}
+
+### #{Faker::Company.catch_phrase}
+#{Faker::Lorem.paragraph(sentence_count: 20, random_sentences_to_add: 50)}
+      )
+  end
+
+  # Categories
+
+  show_step 'Categories'
+  10.times do
+    Category.create(name: Faker::Company.industry)
+    show_progress
+  end
+
+  10.times do
+    Category.all.sample.children << Category.new(name: Faker::Company.profession.capitalize)
+    show_progress
+  end
+
+  10.times do
+    Category.where.not(category_id: nil).all.sample.children << Category.new(name: Faker::Company.type)
+    show_progress
+  end
+
+  # Articles
+
+  show_step 'Categorized articles'
+  Category.find_each do |category|
+    rand(0..15).times do
+      category.articles << Article.new(
+        slug:     Faker::Lorem.characters(number: 12),
+        title:    Faker::Company.catch_phrase,
+        summary:  Faker::Lorem.paragraph(sentence_count: 5, random_sentences_to_add: 10),
+        markdown: faker_markdown
+      )
+      show_progress
+    end
+  end
+
+  show_step 'Uncategorized articles'
+  15.times do
+    Article.create(
+      slug:     Faker::Lorem.characters(number: 12),
+      title:    Faker::Company.catch_phrase,
+      summary:  Faker::Lorem.paragraph(sentence_count: 5, random_sentences_to_add: 10),
+      markdown: faker_markdown
+    )
+    show_progress
+  end
+
+  show_done
+end

@@ -8,6 +8,8 @@ gem 'dokno', '~> 1.2', '>= 1.2.1'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'database_cleaner-active_record', '~> 1.8'
+gem 'faker', '~> 2.15'
 
 group :development, :test do
   gem 'pry-byebug', '~> 3.9'
