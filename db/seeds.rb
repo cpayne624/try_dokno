@@ -1,3 +1,4 @@
+DatabaseCleaner.allow_remote_database_url = true
 DatabaseCleaner.clean_with(:truncation)
 
 module Dokno
