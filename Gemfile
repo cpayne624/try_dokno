@@ -4,10 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.0'
 
 gem 'bootsnap', '>= 1.7.2', require: false
-gem 'dokno', '~> 1.4'
+gem 'dokno', '>= 1.4.7'
 gem 'pg', '~> 1.2', '>= 1.2.3'
-gem 'puma', '~> 5.2', '>= 5.2.2'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'puma', '~> 5.5'
+gem 'rails', '~> 6.1'
 gem 'database_cleaner-active_record', '~> 1.8'
 gem 'faker', '~> 2.16'
 
