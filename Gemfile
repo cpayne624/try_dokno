@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '3.2.1'
 
 gem 'bootsnap', '>= 1.7.2', require: false
 gem 'dokno', '>= 1.4.11'
